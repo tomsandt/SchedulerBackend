@@ -20,7 +20,7 @@ public class Job {
     @Enumerated(EnumType.STRING)
     public Status status;
 
-    @Column(nullable = false)
+    @Column()
     public LocalDateTime lastRun;
 
     @Column(nullable = false)
@@ -31,6 +31,9 @@ public class Job {
 
     @Column(nullable = false)
     public LocalDateTime activeUntil;
+
+    @Column(nullable = false)
+    public String schedule;
 
     public int getid() {
         return id;
@@ -94,5 +97,13 @@ public class Job {
 
     public void setActiveUntil(LocalDateTime activeUntil) {
         this.activeUntil = activeUntil;
+    }
+
+    public String getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(String schedule) {
+        this.schedule = schedule;
     }
 }

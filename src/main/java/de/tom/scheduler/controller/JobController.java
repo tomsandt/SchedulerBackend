@@ -38,6 +38,16 @@ public class JobController {
         return new ResponseEntity<>(newJob, HttpStatus.CREATED);
     }
 
+    @PutMapping("/job/{id}")
+    public ResponseEntity<Job> updateJob(@PathVariable int id, @RequestBody JobDTO jobDTO) {
+        try {
+            Job updatedJob = jobService.updateJob(id, jobDTO);
+            return ResponseEntity.ok(updatedJob);
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @DeleteMapping("/job/{id}")
     public ResponseEntity<Job> deleteJob(@PathVariable int id) {
         try {

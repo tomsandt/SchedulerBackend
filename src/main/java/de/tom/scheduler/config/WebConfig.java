@@ -17,7 +17,7 @@ public class WebConfig implements WebMvcConfigurer {
             @Override
             public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
                 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-                response.setHeader("Pragma", "no-chache");
+                response.setHeader("Pragma", "no-cache");
                 response.setHeader("Expires", "0");
             }
         });

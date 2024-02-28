@@ -14,6 +14,7 @@ public class JobDTO {
     private LocalDateTime nextRun;
     private LocalDateTime activeFrom;
     private LocalDateTime activeUntil;
+    private String schedule;
 
     public int getID() {
         return ID;
@@ -77,5 +78,13 @@ public class JobDTO {
 
     public void setActiveUntil(LocalDateTime activeUntil) {
         this.activeUntil = activeUntil;
+    }
+
+    public String getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(String schedule) {
+        this.schedule = schedule;
     }
 }

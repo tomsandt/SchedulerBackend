@@ -44,8 +44,26 @@ public class JobService {
         job.setNextRun(jobDTO.getNextRun());
         job.setActiveFrom(jobDTO.getActiveFrom());
         job.setActiveUntil(jobDTO.getActiveUntil());
+        job.setSchedule(jobDTO.getSchedule());
 
         return jobRepository.save(job);
+    }
+
+    public Job updateJob(int id, JobDTO jobDTO) {
+
+        Optional<Job> existingJobOptional = jobRepository.findById(id);
+        if(!existingJobOptional.isPresent()) {
+            throw new EntityNotFoundException("Job not found with id " + id);
+        }
+        Job existingJob = existingJobOptional.get();
+        existingJob.setName(jobDTO.getName());
+        existingJob.setStatus(jobDTO.getStatus());
+        existingJob.setActiveFrom(jobDTO.getActiveFrom());
+        existingJob.setActiveUntil(jobDTO.getActiveUntil());
+        existingJob.setSchedule(jobDTO.getSchedule());
+
+        return jobRepository.save(existingJob);
+
     }
 
 }
