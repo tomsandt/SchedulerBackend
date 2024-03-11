@@ -32,7 +32,7 @@ public class Job {
     @Column(nullable = false)
     public LocalDateTime activeUntil;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     public String schedule;
 
     public int getid() {

@@ -41,7 +41,7 @@ public class JobService {
         job.setEnabled(jobDTO.isEnabled());
         job.setStatus(jobDTO.getStatus());
         job.setLastRun(jobDTO.getLastRun());
-        job.setNextRun(jobDTO.getNextRun());
+        job.setNextRun(LocalDateTime.now().plusSeconds(Long.parseLong(jobDTO.getSchedule())));
         job.setActiveFrom(jobDTO.getActiveFrom());
         job.setActiveUntil(jobDTO.getActiveUntil());
         job.setSchedule(jobDTO.getSchedule());
@@ -57,6 +57,7 @@ public class JobService {
         }
         Job existingJob = existingJobOptional.get();
         existingJob.setName(jobDTO.getName());
+        existingJob.setEnabled(jobDTO.isEnabled());
         existingJob.setStatus(jobDTO.getStatus());
         existingJob.setActiveFrom(jobDTO.getActiveFrom());
         existingJob.setActiveUntil(jobDTO.getActiveUntil());
