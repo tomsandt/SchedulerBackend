@@ -41,7 +41,7 @@ public class JobService {
         job.setEnabled(jobDTO.isEnabled());
         job.setStatus(jobDTO.getStatus());
         job.setLastRun(jobDTO.getLastRun());
-        job.setNextRun(LocalDateTime.now().plusSeconds(Long.parseLong(jobDTO.getSchedule())));
+        job.setNextRun(jobDTO.getActiveFrom().plusSeconds(Long.parseLong(jobDTO.getSchedule())));
         job.setActiveFrom(jobDTO.getActiveFrom());
         job.setActiveUntil(jobDTO.getActiveUntil());
         job.setSchedule(jobDTO.getSchedule());
